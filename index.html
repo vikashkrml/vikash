@@ -4,41 +4,72 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vikash Kumar Mandal | Salesforce Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 0;
       scroll-behavior: smooth;
-      background-color: #f8f9fa;
+      background-color: #f5f7fa;
+      color: #333;
     }
     header {
-      background-color: #0070d2;
+      background: linear-gradient(90deg, #0070d2, #005fb2);
       color: white;
-      padding: 2rem;
+      padding: 3rem 1rem;
       text-align: center;
     }
-    nav {
-      background-color: #00396b;
-      padding: 1rem;
-      text-align: center;
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
     }
-    nav a {
-      color: white;
-      margin: 0 1rem;
+    header p {
+      font-size: 1.2rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      margin-top: 1rem;
+      background-color: #fff;
+      color: #0070d2;
+      border: 2px solid #fff;
+      border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
     }
+    nav {
+      background-color: #00396b;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0.5rem 1rem;
+    }
+    nav a {
+      color: white;
+      margin: 0.5rem 1rem;
+      text-decoration: none;
+      font-weight: 600;
+    }
     section {
-      padding: 2rem;
-      max-width: 900px;
+      padding: 3rem 1rem;
+      max-width: 1000px;
       margin: auto;
     }
     h2 {
-      color: #0070d2;
+      color: #005fb2;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    ul {
+      padding-left: 1.2rem;
     }
     .job {
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
     }
     footer {
       background-color: #00396b;
@@ -46,24 +77,14 @@
       text-align: center;
       padding: 1rem;
     }
-    .btn {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      background-color: #0070d2;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      margin-top: 1rem;
-    }
   </style>
 </head>
 <body>
   <header>
     <h1>Vikash Kumar Mandal</h1>
-    <p>Senior Salesforce Developer</p>
-    <p>Email: <a href="mailto:vikash.kr.ml573@gmail.com" style="color: #ffffff;">vikash.kr.ml573@gmail.com</a></p>
-    <p>Phone: +91 7004644036</p>
-    <a href="https://www.linkedin.com/in/vikash-kumar-mandal" class="btn">LinkedIn</a>
+    <p>Salesforce Developer | Certified Salesforce Professional</p>
+    <p>Email: <a href="mailto:vikash.kr.ml573@gmail.com" style="color: #ffffff;">vikash.kr.ml573@gmail.com</a> | Phone: +91 7004644036</p>
+    <a href="https://www.linkedin.com/in/vikash-kumar-mandal-11071995/" class="btn">LinkedIn Profile</a>
   </header>
 
   <nav>
@@ -75,38 +96,51 @@
   </nav>
 
   <section id="about">
-    <h2>About Me</h2>
-    <p>I’m a passionate Salesforce Developer with hands-on experience in Salesforce, LWC, Apex, Integration, and Flows. I enjoy transforming business requirements into scalable Salesforce solutions and thrive in both independent and collaborative environments.</p>
+    <h2>Professional Summary</h2>
+    <p>Salesforce Developer with 6+ years of experience building scalable, secure, and high-performing applications on the Salesforce platform. Proven track record across healthcare, finance, telecom, and education sectors. Adept in LWC, Apex, integrations, Experience Cloud, and DevOps. Passionate about innovation and collaboration to deliver business-transforming cloud solutions.</p>
   </section>
 
   <section id="experience">
-    <h2>Work Experience</h2>
+    <h2>Professional Experience</h2>
     <div class="job">
-      <strong>Technical Consultant (Salesforce Developer)</strong><br>
-      Jul 2022 – Present<br>
+      <strong>Salesforce.com India Pvt Ltd</strong><br>
+      <em>Technical Consultant | Jul 2021 – Present</em>
       <ul>
-        <li>Built Experience Cloud portals (TEPCO, Kotak Mahindra Bank)</li>
-        <li>Developed LWC, Flows, OmniStudio components</li>
-        <li>Managed Bitbucket, Flosum CI/CD</li>
+        <li>Led Experience Cloud portal development with audience-based dynamic content</li>
+        <li>Built reusable LWCs aligned with Google’s modular standards</li>
+        <li>Automated flows, sharing rules, and user access with security-first design</li>
+        <li>Handled CI/CD pipelines with Flosum and Bitbucket</li>
       </ul>
     </div>
     <div class="job">
-      <strong>Associate Technical Consultant</strong><br>
-      Jul 2021 – Jul 2022
+      <strong>Deloitte Consulting India Pvt Ltd</strong><br>
+      <em>Business Technology Analyst | Nov 2020 – Jul 2021</em>
+      <ul>
+        <li>Built Salesforce Health Cloud with Vlocity and FlexCards</li>
+        <li>Integrated systems with REST APIs and secured permission models</li>
+      </ul>
     </div>
     <div class="job">
-      <strong>Business Technology Analyst (Salesforce Developer) – Deloitte</strong><br>
-      Nov 2020 – Jul 2021
-    </div>
-    <div class="job">
-      <strong>Salesforce Developer – Teqfocus</strong><br>
-      May 2019 – Nov 2020
+      <strong>Teqforce Solutions Pvt Ltd</strong><br>
+      <em>Salesforce Developer | Nov 2018 – Nov 2020</em>
+      <ul>
+        <li>Built portals for Kotak Bank with LWC, reCAPTCHA, and 3rd-party APIs</li>
+        <li>Streamlined workflows and Git-based CI/CD</li>
+      </ul>
     </div>
   </section>
 
   <section id="skills">
-    <h2>Skills</h2>
-    <p>Salesforce, Apex, LWC, OmniStudio, SOQL/SOSL, HTML, CSS, JavaScript, Bitbucket, Git, Flows, Visualforce</p>
+    <h2>Core Competencies</h2>
+    <ul>
+      <li><strong>Salesforce:</strong> Apex, LWC, Visualforce, Aura, Triggers, Test Classes</li>
+      <li><strong>Automation:</strong> Flows, Validation Rules, Process Builder</li>
+      <li><strong>Integration:</strong> REST/SOAP APIs, OmniStudio, 3rd-party systems</li>
+      <li><strong>Experience Cloud:</strong> Portals, FlexCards, Audience Targeting</li>
+      <li><strong>DevOps:</strong> Bitbucket, Git, Flosum, SourceTree, Ant Migration</li>
+      <li><strong>Web Technologies:</strong> HTML, CSS, JavaScript, Vlocity, VS Code</li>
+      <li><strong>Agile Delivery:</strong> Sprints, Stories, Team Collaboration</li>
+    </ul>
   </section>
 
   <section id="certifications">
@@ -116,8 +150,8 @@
       <li>Salesforce Administrator</li>
       <li>Salesforce Platform App Builder</li>
       <li>Salesforce JavaScript Developer I</li>
-      <li>Experience Cloud Consultant</li>
-      <li>OmniStudio Developer</li>
+      <li>Salesforce Experience Cloud Consultant</li>
+      <li>Salesforce OmniStudio Developer</li>
       <li>Salesforce AI Associate</li>
       <li>Salesforce Associate</li>
     </ul>
@@ -125,11 +159,11 @@
 
   <section id="education">
     <h2>Education</h2>
-    <p>Bachelor of Technology - Electrical and Electronics Engineering<br>RVS College of Engineering and Technology (2014–2018)</p>
+    <p><strong>B.Tech – Electrical and Electronics Engineering</strong><br>Kolhan University | 2018 | Scored 79.2%</p>
   </section>
 
   <footer>
-    &copy; 2025 Vikash Kumar Mandal | Made with ❤️ for Salesforce
+    &copy; 2025 Vikash Kumar Mandal | Built with passion for Salesforce technology
   </footer>
 </body>
 </html>
