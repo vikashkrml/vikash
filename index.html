@@ -4,166 +4,711 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vikash Kumar Mandal | Salesforce Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 0;
-      scroll-behavior: smooth;
-      background-color: #f5f7fa;
-      color: #333;
     }
+
+    :root {
+      --primary-blue: #0070d2;
+      --dark-blue: #005fb2;
+      --navy: #00396b;
+      --light-gray: #f8fafc;
+      --gray: #64748b;
+      --dark-gray: #334155;
+      --white: #ffffff;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--dark-gray);
+      background-color: var(--light-gray);
+      overflow-x: hidden;
+    }
+
+    /* Header Styles */
     header {
-      background: linear-gradient(90deg, #0070d2, #005fb2);
-      color: white;
-      padding: 3rem 1rem;
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+      color: var(--white);
+      padding: 4rem 2rem;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="white" opacity="0.1"><polygon points="0,0 1000,0 1000,100 0,80"/></svg>');
+      background-size: cover;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
     header h1 {
-      font-size: 2.5rem;
-      margin: 0;
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out 0.2s forwards;
     }
-    header p {
-      font-size: 1.2rem;
+
+    .subtitle {
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out 0.4s forwards;
     }
-    .btn {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      margin-top: 1rem;
-      background-color: #fff;
-      color: #0070d2;
-      border: 2px solid #fff;
-      border-radius: 6px;
+
+    .contact-info {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out 0.6s forwards;
+    }
+
+    .contact-info a {
+      color: var(--white);
       text-decoration: none;
-      font-weight: bold;
+      border-bottom: 1px solid transparent;
+      transition: border-bottom 0.3s ease;
     }
+
+    .contact-info a:hover {
+      border-bottom: 1px solid var(--white);
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out 0.8s forwards;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--white);
+      color: var(--primary-blue);
+      border: 2px solid var(--white);
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--white);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--white);
+      color: var(--primary-blue);
+    }
+
+    /* Navigation */
     nav {
-      background-color: #00396b;
+      background-color: var(--navy);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      padding: 0.5rem 1rem;
+      gap: 2rem;
     }
+
     nav a {
-      color: white;
-      margin: 0.5rem 1rem;
+      color: var(--white);
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      position: relative;
     }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background-color: var(--white);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    nav a:hover::after {
+      width: 80%;
+    }
+
+    nav a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
     section {
-      padding: 3rem 1rem;
-      max-width: 1000px;
-      margin: auto;
+      background: var(--white);
+      margin-bottom: 3rem;
+      padding: 3rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease-out forwards;
     }
+
+    section:nth-child(even) {
+      animation-delay: 0.2s;
+    }
+
+    section:nth-child(odd) {
+      animation-delay: 0.4s;
+    }
+
     h2 {
-      color: #005fb2;
-      border-bottom: 2px solid #ccc;
+      color: var(--dark-blue);
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
       padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
+      border-bottom: 3px solid var(--primary-blue);
+      position: relative;
     }
-    ul {
-      padding-left: 1.2rem;
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background-color: var(--primary-blue);
+      border-radius: 2px;
     }
-    .job {
+
+    /* Professional Summary */
+    .summary-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--gray);
+    }
+
+    /* Experience Cards */
+    .job-card {
+      background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 2rem;
       margin-bottom: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
-    footer {
-      background-color: #00396b;
-      color: white;
+
+    .job-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+      transform: scaleY(0);
+      transition: transform 0.3s ease;
+    }
+
+    .job-card:hover::before {
+      transform: scaleY(1);
+    }
+
+    .job-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .job-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--dark-blue);
+    }
+
+    .job-company {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--dark-gray);
+    }
+
+    .job-duration {
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+      color: var(--white);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .job-card ul {
+      padding-left: 1.5rem;
+    }
+
+    .job-card li {
+      margin-bottom: 0.5rem;
+      color: var(--gray);
+      position: relative;
+    }
+
+    .job-card li::marker {
+      color: var(--primary-blue);
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .skill-category {
+      background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+      padding: 1.5rem;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+      transition: all 0.3s ease;
+    }
+
+    .skill-category:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .skill-title {
+      font-weight: 600;
+      color: var(--dark-blue);
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .skill-list {
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    /* Certifications */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .cert-badge {
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+      color: var(--white);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
       text-align: center;
-      padding: 1rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .cert-badge:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Education */
+    .education-card {
+      background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .degree {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--dark-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .university {
+      font-size: 1.1rem;
+      color: var(--gray);
+      margin-bottom: 0.5rem;
+    }
+
+    .score {
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+      color: var(--white);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: inline-block;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--dark-blue) 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        padding: 3rem 1rem;
+      }
+      
+      header h1 {
+        font-size: 2.5rem;
+      }
+      
+      main {
+        padding: 1rem;
+      }
+      
+      section {
+        padding: 2rem 1.5rem;
+      }
+      
+      .job-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
+    /* Scroll-based animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Interactive elements */
+    .interactive-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(0, 112, 210, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+      transition: all 0.3s ease;
     }
   </style>
 </head>
 <body>
+  <div class="interactive-bg"></div>
+  
   <header>
-    <h1>Vikash Kumar Mandal</h1>
-    <p>Salesforce Developer | Certified Salesforce Professional</p>
-    <p>Email: <a href="mailto:vikash.kr.ml573@gmail.com" style="color: #ffffff;">vikash.kr.ml573@gmail.com</a> | Phone: +91 7004644036</p>
-    <a href="https://www.linkedin.com/in/vikash-kumar-mandal-11071995/" class="btn">LinkedIn Profile</a>
+    <div class="header-content">
+      <h1>Vikash Kumar Mandal</h1>
+      <p class="subtitle">Salesforce Developer | Certified Salesforce Professional</p>
+      <div class="contact-info">
+        <span>📧 <a href="mailto:vikash.kr.ml573@gmail.com">vikash.kr.ml573@gmail.com</a></span>
+        <span style="margin: 0 1rem;">|</span>
+        <span>📱 +91 7004644036</span>
+      </div>
+      <div class="cta-buttons">
+        <a href="https://www.linkedin.com/in/vikash-kumar-mandal-11071995/" class="btn" target="_blank">
+          🔗 LinkedIn Profile
+        </a>
+        <a href="#experience" class="btn btn-outline">
+          📋 View Experience
+        </a>
+      </div>
+    </div>
   </header>
 
   <nav>
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
-    <a href="#certifications">Certifications</a>
-    <a href="#education">Education</a>
+    <div class="nav-container">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#education">Education</a>
+    </div>
   </nav>
 
-  <section id="about">
-    <h2>Professional Summary</h2>
-    <p>Salesforce Developer with 6+ years of experience building scalable, secure, and high-performing applications on the Salesforce platform. Proven track record across healthcare, finance, telecom, and education sectors. Adept in LWC, Apex, integrations, Experience Cloud, and DevOps. Passionate about innovation and collaboration to deliver business-transforming cloud solutions.</p>
-  </section>
+  <main>
+    <section id="about" class="fade-in">
+      <h2>Professional Summary</h2>
+      <p class="summary-text">
+        Salesforce Developer with 6+ years of experience building scalable, secure, and high-performing applications on the Salesforce platform. Proven track record across healthcare, finance, telecom, and education sectors. Adept in LWC, Apex, integrations, Experience Cloud, and DevOps. Passionate about innovation and collaboration to deliver business-transforming cloud solutions.
+      </p>
+    </section>
 
-  <section id="experience">
-    <h2>Professional Experience</h2>
-    <div class="job">
-      <strong>Salesforce.com India Pvt Ltd</strong><br>
-      <em>Technical Consultant | Jul 2021 – Present</em>
-      <ul>
-        <li>Led Experience Cloud portal development with audience-based dynamic content</li>
-        <li>Built reusable LWCs aligned with Google’s modular standards</li>
-        <li>Automated flows, sharing rules, and user access with security-first design</li>
-        <li>Handled CI/CD pipelines with Flosum and Bitbucket</li>
-      </ul>
-    </div>
-    <div class="job">
-      <strong>Deloitte Consulting India Pvt Ltd</strong><br>
-      <em>Business Technology Analyst | Nov 2020 – Jul 2021</em>
-      <ul>
-        <li>Built Salesforce Health Cloud with Vlocity and FlexCards</li>
-        <li>Integrated systems with REST APIs and secured permission models</li>
-      </ul>
-    </div>
-    <div class="job">
-      <strong>Teqforce Solutions Pvt Ltd</strong><br>
-      <em>Salesforce Developer | Nov 2018 – Nov 2020</em>
-      <ul>
-        <li>Built portals for Kotak Bank with LWC, reCAPTCHA, and 3rd-party APIs</li>
-        <li>Streamlined workflows and Git-based CI/CD</li>
-      </ul>
-    </div>
-  </section>
+    <section id="experience" class="fade-in">
+      <h2>Professional Experience</h2>
+      
+      <div class="job-card">
+        <div class="job-header">
+          <div>
+            <div class="job-company">Salesforce.com India Pvt Ltd</div>
+            <div class="job-title">Technical Consultant</div>
+          </div>
+          <div class="job-duration">Jul 2021 – Present</div>
+        </div>
+        <ul>
+          <li>Led Experience Cloud portal development with audience-based dynamic content</li>
+          <li>Built reusable LWCs aligned with Google's modular standards</li>
+          <li>Automated flows, sharing rules, and user access with security-first design</li>
+          <li>Handled CI/CD pipelines with Flosum and Bitbucket</li>
+        </ul>
+      </div>
 
-  <section id="skills">
-    <h2>Core Competencies</h2>
-    <ul>
-      <li><strong>Salesforce:</strong> Apex, LWC, Visualforce, Aura, Triggers, Test Classes</li>
-      <li><strong>Automation:</strong> Flows, Validation Rules, Process Builder</li>
-      <li><strong>Integration:</strong> REST/SOAP APIs, OmniStudio, 3rd-party systems</li>
-      <li><strong>Experience Cloud:</strong> Portals, FlexCards, Audience Targeting</li>
-      <li><strong>DevOps:</strong> Bitbucket, Git, Flosum, SourceTree, Ant Migration</li>
-      <li><strong>Web Technologies:</strong> HTML, CSS, JavaScript, Vlocity, VS Code</li>
-      <li><strong>Agile Delivery:</strong> Sprints, Stories, Team Collaboration</li>
-    </ul>
-  </section>
+      <div class="job-card">
+        <div class="job-header">
+          <div>
+            <div class="job-company">Deloitte Consulting India Pvt Ltd</div>
+            <div class="job-title">Business Technology Analyst</div>
+          </div>
+          <div class="job-duration">Nov 2020 – Jul 2021</div>
+        </div>
+        <ul>
+          <li>Built Salesforce Health Cloud with Vlocity and FlexCards</li>
+          <li>Integrated systems with REST APIs and secured permission models</li>
+        </ul>
+      </div>
 
-  <section id="certifications">
-    <h2>Certifications</h2>
-    <ul>
-      <li>Salesforce Platform Developer I</li>
-      <li>Salesforce Administrator</li>
-      <li>Salesforce Platform App Builder</li>
-      <li>Salesforce JavaScript Developer I</li>
-      <li>Salesforce Experience Cloud Consultant</li>
-      <li>Salesforce OmniStudio Developer</li>
-      <li>Salesforce AI Associate</li>
-      <li>Salesforce Associate</li>
-    </ul>
-  </section>
+      <div class="job-card">
+        <div class="job-header">
+          <div>
+            <div class="job-company">Teqforce Solutions Pvt Ltd</div>
+            <div class="job-title">Salesforce Developer</div>
+          </div>
+          <div class="job-duration">Nov 2018 – Nov 2020</div>
+        </div>
+        <ul>
+          <li>Built portals for Kotak Bank with LWC, reCAPTCHA, and 3rd-party APIs</li>
+          <li>Streamlined workflows and Git-based CI/CD</li>
+        </ul>
+      </div>
+    </section>
 
-  <section id="education">
-    <h2>Education</h2>
-    <p><strong>B.Tech – Electrical and Electronics Engineering</strong><br>Kolhan University | 2018 | Scored 79.2%</p>
-  </section>
+    <section id="skills" class="fade-in">
+      <h2>Core Competencies</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <div class="skill-title">🚀 Salesforce Development</div>
+          <div class="skill-list">Apex, LWC, Visualforce, Aura, Triggers, Test Classes</div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-title">⚡ Process Automation</div>
+          <div class="skill-list">Flows, Validation Rules, Process Builder</div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-title">🔗 System Integration</div>
+          <div class="skill-list">REST/SOAP APIs, OmniStudio, 3rd-party systems</div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-title">🌐 Experience Cloud</div>
+          <div class="skill-list">Portals, FlexCards, Audience Targeting</div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-title">🛠️ DevOps & Tools</div>
+          <div class="skill-list">Bitbucket, Git, Flosum, SourceTree, Ant Migration</div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-title">💻 Web Technologies</div>
+          <div class="skill-list">HTML, CSS, JavaScript, Vlocity, VS Code</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications" class="fade-in">
+      <h2>Salesforce Certifications</h2>
+      <div class="cert-grid">
+        <div class="cert-badge">🏆 Platform Developer I</div>
+        <div class="cert-badge">⚙️ Administrator</div>
+        <div class="cert-badge">📱 Platform App Builder</div>
+        <div class="cert-badge">💻 JavaScript Developer I</div>
+        <div class="cert-badge">🌐 Experience Cloud Consultant</div>
+        <div class="cert-badge">🔧 OmniStudio Developer</div>
+        <div class="cert-badge">🤖 AI Associate</div>
+        <div class="cert-badge">🎯 Salesforce Associate</div>
+      </div>
+    </section>
+
+    <section id="education" class="fade-in">
+      <h2>Education</h2>
+      <div class="education-card">
+        <div class="degree">B.Tech – Electrical and Electronics Engineering</div>
+        <div class="university">Kolhan University | 2018</div>
+        <div class="score">79.2% Score</div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    &copy; 2025 Vikash Kumar Mandal | Built with passion for Salesforce technology
+    <p>&copy; 2025 Vikash Kumar Mandal | Built with passion for Salesforce technology ⚡</p>
   </footer>
+
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Interactive background effect
+    document.addEventListener('mousemove', (e) => {
+      const bg = document.querySelector('.interactive-bg');
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = (e.clientY / window.innerHeight) * 100;
+      bg.style.setProperty('--x', x + '%');
+      bg.style.setProperty('--y', y + '%');
+    });
+
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Add pulse animation to certification badges on hover
+    document.querySelectorAll('.cert-badge').forEach(badge => {
+      badge.addEventListener('mouseenter', function() {
+        this.style.animation = 'pulse 0.6s ease-in-out';
+      });
+      
+      badge.addEventListener('animationend', function() {
+        this.style.animation = '';
+      });
+    });
+
+    // Active navigation highlight
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('nav a');
+      
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.offsetHeight;
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
